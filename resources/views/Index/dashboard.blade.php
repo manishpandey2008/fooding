@@ -13,12 +13,16 @@
     	.card{
     		box-shadow: 5px 5px 5px 5px #888888;
     	}
+      @font-face{
+        font-family:kudgfdgf;
+        src:url('go3v2.ttf');
+      }
     </style>
   </head>
   <body style="background-color: #abcdef;">
   <section class="fixed-top">
   	<nav class="navbar navbar-expand-lg navbar-light bg-light" >
-	  <a class="navbar-brand" href="{{route('index')}}"><img src="{{asset('image/logo.jpg')}}" style="width: 50px;height: 50px;border-radius: 50%"></a>
+	  <a class="navbar-brand" href="{{route('index')}}"><img src="{{asset('image/logo.jpg')}}" style="width: 40px;height: 40px;border-radius: 50%"></a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
@@ -32,7 +36,7 @@
 	  </div>
 	</nav>
   </section>
-  <div  class="my-5">
+  <div  class="my-5" style="padding-top:50px">
   	<div class="container">
   		<div class="row ">
   			<div class="col-12">
@@ -99,12 +103,12 @@
   			    <div class="row">
   			      <div class="col-12 form-group">
   			        <label>Product Name</label>
-  			        <input type="text" name="productName" class="form-control" placeholder="Enter Product Name" required="" id="productName">
+  			        <input type="text" name="productName" class="form-control" placeholder="Enter Product Name" required="" id="productName" maxlength="40">
   			        <p id="proMsg" style="color: red"></p>
   			      </div>
   			      <div class="col-12 form-group">
   			        <label>Product Price</label>
-  			        <input type="number" name="productPrice" class="form-control" placeholder="Enter Product Price" min="0" required="" id="productPrice">
+  			        <input type="number" name="productPrice" class="form-control" placeholder="Enter Product Price" min="0" required="" id="productPrice" maxlength="10">
   			      </div>
   			      <div class="col-12 form-group">
   			         <label>Product Type</label>
@@ -147,15 +151,15 @@
           <div class="row">
             <div class="col-lg-6 col-sm-12">
               <label>Product ID</label>
-              <input type="text" name="proId" id="proId" readonly="" class="form-control">
+              <input type="text" name="proId" id="proId" readonly="" class="form-control" maxlength="20">
             </div>
             <div class="col-lg-6 col-sm-12">
               <label>Product Name</label>
-              <input type="text" name="proName" id="proName"  class="form-control">
+              <input type="text" name="proName" id="proName"  class="form-control" maxlength="40">
             </div>
             <div class="col-lg-6 col-sm-12">
               <label>Product Price</label>
-              <input type="text" name="proPrice" id="proPrice"  class="form-control">
+              <input type="text" name="proPrice" id="proPrice"  class="form-control" maxlength="10">
             </div>
             <div class="col-12 my-2">
                <button type="submit" class="btn btn-primary">Save changes</button>

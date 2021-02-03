@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>SignUp</title>
+        <title>User Details</title>
     <!--css-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css"/>
@@ -12,7 +12,8 @@
 
         <style>
             .banner-background{
-              clip-path: polygon(30% 0%, 70% 0%, 100% 0, 100% 94%, 70% 100%, 30% 93%, 0 100%, 0 0);
+              clip-path: polygon(30% 0%, 70% 0%, 100% 0, 100% 94%, 70% 100%, 31% 95%, 0 100%, 0 0);
+
             }
         </style>
     </head>
@@ -20,7 +21,7 @@
 <!--        navbar-->
 <section>
     <nav class="navbar navbar-expand-lg navbar-dark primary-background">
-        <a class="navbar-brand" href="#">Bloohash</a>
+        <a class="navbar-brand" href="{{route('b_index')}}">Bloohash</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -31,13 +32,7 @@
         </ul>
        <ul class="navbar-nav float-right">
            <li class="nav-item active">
-               <a class="nav-link" href="#"><span class="fa fa-institution"></span> Home <span class="sr-only">(current)</span></a>
-           </li>
-           <li class="nav-item">
-             <a class="nav-link" href="#">Login</a>
-           </li>
-           <li class="nav-item">
-             <a class="nav-link" href="#">Signup</a>
+               <a class="nav-link" href="{{route('b_index')}}"><span class="fa fa-institution"></span> Home <span class="sr-only">(current)</span></a>
            </li>
        </ul>
       </div>
@@ -53,20 +48,33 @@
             <div class="col-md-6 offset-md-3">
               <div class="card">
                 <div class="card-header primary-background text-center">
-                  <i class="fa fa-user-plus" ></i><br>
-                  <p><strong>Sign Up</strong></p>
+                  <i class="fa fa-user"></i><br>
+                  <p><strong>User Details</strong></p>
                 </div>
                 <div class="card-body text-secondary">
-                  <form method="post" action="{{route('final_login')}}">
+                  <form method="post" action="{{route('bp_user_data')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                       <div class="col-12 form-group">
-                        <label>User Id</label>
-                        <input type="text" name="userId" class="form-control" required="" placeholder="Enter Your User ID" >
+                        <label>First Name</label>
+                        <input type="text" name="fName" class="form-control" required="" placeholder="Enter Your First Name" >
                       </div>
                       <div class="col-12 form-group">
-                        <label>Password</label>
-                        <input type="password" name="password" class="form-control" required="" placeholder="Enter password">
+                        <label>Last Name</label>
+                        <input type="text" name="lName" class="form-control" required="" placeholder="Enter Your Last Name" >
+                        <p class="text-danger" style="display:none;font-size: 12px">Phone No Is Registerd</p>
+                      </div>
+                      <div class="col-12 form-group">
+                        <label>Address</label>
+                        <input type="text" name="address" class="form-control" required="" placeholder="Enter Your Address" >
+                      </div>
+                      <div class="col-12 form-group">
+                        <label>Zip Code</label>
+                        <input type="text" name="zipCode" class="form-control" required="" placeholder="Enter Your Zip Code" >
+                      </div>
+                      <div class="col-12 form-group">
+                        <label>Photo</label>
+                        <input type="file" name="photo" class="form-control" required="" >
                       </div>
                       <div class="col-12 form-group">
                         <input type="submit" name="" class="form-control btn btn-primary" >
@@ -74,8 +82,8 @@
                     </div>
                   </form>
                 </div>
-                <div class="card-footer">
-                  
+                <div class="card-footer text-secondary">
+                 
                 </div>
               </div>
             </div>

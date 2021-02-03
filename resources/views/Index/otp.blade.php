@@ -1,12 +1,10 @@
 <!DOCTYPE html >
 <html>
 <head>
-<title>Wing the Air</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FoodShala</title>
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
-
 <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" style="background-color: #abcdef;">
  <div >
 
@@ -26,7 +24,7 @@
             <div class="row py-3">
               <div class="col-8">
                 <input type="text"  pattern="[0-9]{4}" class="form-control" required="" id="otp">
-                <p style="display:none;color: red" id="verifyMsg"><strong>Otp Not Verified , Enter Again</strong></p>
+                <p style="display:none;color: red" id="verifyMsg"><strong>OTP Not Verified, Enter Again</strong></p>
               </div>
               <div class="col-4"> 
                 <button class="btn btn-primary" id="verifyBtn">Verify</button>
@@ -48,7 +46,7 @@
               <div class="col-12 form-group">
                 <label>Enter Password</label>
                 <input type="password" class="form-control " required="" placeholder="Enter Password" name="password" id="password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters">
-                <p id="passMsg" style="color: red;display: none;">Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters</p>
+                
               </div>
               <div class="col-12 form-group">
                 <label>Re-Enter Password</label>
@@ -101,10 +99,6 @@
                 }
           });
     });
-
-    $(document).on('click','#password',function(){
-        $('#passMsg').show();
-    })
 
   });
 function checkPassword(form){

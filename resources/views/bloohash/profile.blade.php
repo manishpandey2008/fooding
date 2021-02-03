@@ -4,12 +4,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>SignUp</title>
+        <title>Profile</title>
     <!--css-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
         <style>
             .banner-background{
               clip-path: polygon(30% 0%, 70% 0%, 100% 0, 100% 94%, 70% 100%, 30% 93%, 0 100%, 0 0);
@@ -31,13 +31,7 @@
         </ul>
        <ul class="navbar-nav float-right">
            <li class="nav-item active">
-               <a class="nav-link" href="#"><span class="fa fa-institution"></span> Home <span class="sr-only">(current)</span></a>
-           </li>
-           <li class="nav-item">
-             <a class="nav-link" href="#">Login</a>
-           </li>
-           <li class="nav-item">
-             <a class="nav-link" href="#">Signup</a>
+               <a class="nav-link" href="{{route('b_index')}}"><span class="fa fa-institution"></span> Home <span class="sr-only">(current)</span></a>
            </li>
        </ul>
       </div>
@@ -50,34 +44,37 @@
     <div class="jumbotron primary-background text-white ">
         <div class="container">
           <div class="row">
-            <div class="col-md-6 offset-md-3">
-              <div class="card">
-                <div class="card-header primary-background text-center">
-                  <i class="fa fa-user-plus" ></i><br>
-                  <p><strong>Sign Up</strong></p>
-                </div>
-                <div class="card-body text-secondary">
-                  <form method="post" action="{{route('final_login')}}">
-                    @csrf
-                    <div class="row">
-                      <div class="col-12 form-group">
-                        <label>User Id</label>
-                        <input type="text" name="userId" class="form-control" required="" placeholder="Enter Your User ID" >
-                      </div>
-                      <div class="col-12 form-group">
-                        <label>Password</label>
-                        <input type="password" name="password" class="form-control" required="" placeholder="Enter password">
-                      </div>
-                      <div class="col-12 form-group">
-                        <input type="submit" name="" class="form-control btn btn-primary" >
-                      </div>
-                    </div>
-                  </form>
-                </div>
-                <div class="card-footer">
-                  
-                </div>
-              </div>
+            <div class="col-md-6 my-2">
+             <div class="d-flex justify-content-center">
+               <img src="{{asset('uploads/'.$user['photo'])}}" style="width: 200px;height: 200px;border-radius: 50%"><br>
+             </div>
+              <p class="text-center"><strong>{{$user['firstName'].' '.$user['lastName']}}</strong></p>
+            </div>
+            <div class="col-md-6 my-2">
+             <table class="table">
+               <tbody>
+                 <tr>
+                   <th scope="row">Name</th>
+                   <td>{{$user['firstName'].' '.$user['lastName']}}</td>
+                 </tr>
+                 <tr>
+                   <th scope="row">Phone</th>
+                   <td>{{$user['phone']}}</td>
+                 </tr>
+                 <tr>
+                   <th scope="row">Address</th>
+                   <td>{{$user['add']}}</td>
+                 </tr>
+                 <tr>
+                   <th scope="row">Zip</th>
+                   <td>{{$user['zip_code']}}</td>
+                 </tr>
+                 <tr>
+                   <th scope="row">User Name</th>
+                   <td>{{$user['userName']}}</td>
+                 </tr>
+               </tbody>
+             </table>
             </div>
           </div>
         </div>
@@ -88,6 +85,11 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <script src="js/myjs.js" type="text/javascript"></script>
+        <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript">
+          $(document).ready( function () {
+              $('#myTable').DataTable();
+          } );
+        </script>
     </body>
 </html>

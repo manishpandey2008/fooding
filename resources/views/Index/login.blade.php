@@ -1,7 +1,7 @@
 <!DOCTYPE html >
 <html>
 <head>
-<title>Wing the Air</title>
+<title>FoodShala</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -49,10 +49,10 @@
           </form>
           <div class="row">
             <div class="col-12">
-              <a href="#" class="text-danger float-right">Forget Password</a>
+              <a href="{{route('forget')}}" class="text-danger float-right">Forget Password</a>
             </div>
             <div class="col-12">
-              <p href="#" class=""><strong>If U Are Not Register <a href="{{route('Signup')}}">Click</a> me</strong></p>
+              <p  class=""><strong>If You Are Not Registered <a href="{{route('Signup')}}">Click</a> Here</strong></p>
             </div>
             <div class="col-12 pb-4">
               <a href="{{route('index')}}" class="btn btn-info "><span><i class="fa fa-arrow-left" aria-hidden="true"></i></span> Home</a>

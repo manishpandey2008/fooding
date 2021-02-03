@@ -1,19 +1,25 @@
-<!DOCTYPE html >
+<!DOCTYPE html>
 <html>
 <head>
-<title>Wing the Air</title>
+<title>FoodShala</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-</head>
 <style type="text/css">
   .customer,.restorent{
     display: none;
   }
+  .card{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+  }
 </style>
+</head>
 <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" style="background-color: #abcdef;">
  <div>
-
    <div class="container">
      <div class="row">
         <div class="col-lg-4 col-sm-12 mx-auto my-5 card" style="border: 1px solid black;width: 100%;">
@@ -76,6 +82,14 @@
               </div>
             </div>
           </form>
+          <div class="row py-2">
+            <div class="col-6">
+              <a class="btn btn-primary" href="{{route('index')}}"><i class="fa fa-arrow-left" aria-hidden="true"></i> Home</a>
+            </div>
+            <div class="col-6">
+              <a class="btn btn-primary float-right" href="{{route('login')}}">Login <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </div>
         </div>
      </div>
    </div>

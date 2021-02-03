@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Products;
 use App\Models\Registration;
 use DB;
+Use Validator;
 class DashboardController extends Controller
 {
     public function RestaurantDashboard()
@@ -22,6 +23,17 @@ class DashboardController extends Controller
 
     public function AddProduct(Request $request)
     {
+        $rules=[
+                'productName'=>'required|max:40',
+                'productPrice'=>'required|max:10',
+                'productType'=>'required|max:10',
+                'photo'=>'required|mimes:jpeg,bmp,png|max:4000',
+                ];
+
+            $validator=Validator::make($request->all(),$rules);
+            if ($validator->fails()) {
+                return response()->json( $validator->errors(),400);
+            }
 
         if ($request->hasfile('photo')) {
             $file=$request->file('photo');
@@ -73,6 +85,17 @@ class DashboardController extends Controller
 
     public function EditProduct(Request $request)
     {
+        $rules=[
+                'proId'=>'required|max:20',
+                'proName'=>'required|max:40',
+                'proPrice'=>'required|max:10',
+                ];
+
+        $validator=Validator::make($request->all(),$rules);
+        if ($validator->fails()) {
+            return response()->json( $validator->errors(),400);
+        }
+
     	$proId=$request->proId;
     	$data=[
     		'product_name'=>$request->proName,

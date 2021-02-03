@@ -11,6 +11,7 @@ Use Validator;
 use Illuminate\Support\Facades\Hash;
 class HomeController extends Controller
 {
+   
     public function Index(Request $request)
     {
         $allPro=Products::join('registration', 'products.restaurant_id', '=', 'registration.user_id')
@@ -62,24 +63,34 @@ class HomeController extends Controller
 
     public function Signup(Request $request)
     {
-        $msg=$request->msg;
-    	return view('Index.signup',[
-            'msg'=>$msg,
-        ]);
+        if ($request->session()->get('id_of_user')===null) {
+           $msg=$request->msg;
+                return view('Index.signup',[
+                    'msg'=>$msg,
+                ]);
+        }else{
+             return redirect()->route('index');
+        }
+        
     }
-    public function Otp($id)
+    public function Otp(Request $request,$id)
     {
-        return view('Index.otp',[
+        if ($request->session()->get('id_of_user')===null){
+            return view('Index.otp',[
             'id'=>$id,
-        ]);
+            ]);
+        }else{
+             return redirect()->route('index');
+        }
+        
     }
 
     public function FinalSignup(Request $request,$id)
     {
         $rules=[
-                'signUpFor'=>'required',
-                'userName'=>'required',
-                'userPhone'=>'required',
+                'signUpFor'=>'required|max:20',
+                'userName'=>'required|max:40',
+                'userPhone'=>'required|max:10',
                 '_token'=>'required',
                 ];
 
@@ -157,6 +168,16 @@ class HomeController extends Controller
 
     public function SetPassword(Request $request)
     {
+        $rules=[
+                'password'=>'required',
+                'rePassword'=>'required',
+                ];
+
+            $validator=Validator::make($request->all(),$rules);
+            if ($validator->fails()) {
+                return response()->json( $validator->errors(),400);
+            }
+
         if ($request->session()->get('id_of_user')!==null) {
             $pass1=$request->password;
             $pass2=$request->rePassword;
@@ -186,14 +207,29 @@ class HomeController extends Controller
        return redirect()->route('index');
     }
 
-    public function Login()
+    public function Login(Request $request)
     {
-        return view('Index.login',[
+        if ($request->session()->get('id_of_user')===null) {
+           return view('Index.login',[
             'msg'=>"0",
-        ]);
+            ]);
+        }else{
+            return redirect()->route('index');
+        }
+        
     }
     public function FinalLogin(Request $request)
     {
+        $rules=[
+                'userId'=>'required|max:20',
+                'password'=>'required',
+                ];
+
+        $validator=Validator::make($request->all(),$rules);
+        if ($validator->fails()) {
+            return response()->json( $validator->errors(),400);
+        }
+
        $user_id=$request->userId;
        $pass=$request->password;
        $count=Registration::all()->where('user_id',$user_id)->first();
@@ -343,4 +379,27 @@ class HomeController extends Controller
          $profile=Registration::all()->where('user_id',$userId)->first();
         return view('Index.profile',['profile'=>$profile]);
     }
+
+    public function Forget(Request $request)
+    {
+        return view('Index.forgetPass');
+       
+    }
+    public function NumberVerification(Request $request)
+    {
+
+        $role=$request->signUpFor;
+        $phoneNum=$request->userPhone;
+        $check=$profile=Registration::all()->where('phone_number',$phoneNum)->where('user_type',$role);
+        if ($check->count()) {
+            $check=$check->first();
+            return redirect()->route('otp_verification',[
+                'id'=>$check['user_id'],
+            ]);
+        }else{
+            return redirect()->route('Signup');
+        }
+    }
+
+    
 }
